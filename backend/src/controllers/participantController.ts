@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 import { PrismaClient } from '@prisma/client';
-import { io } from '../utils/socket';
+import { notifyNewAttendance } from '../utils/socket';
 import ExcelJS from 'exceljs';
 
 const prisma = new PrismaClient();
@@ -163,7 +163,7 @@ export const forceCheckInParticipant = async (req: Request, res: Response) => {
         include: { guest: true, event: true }
       });
 
-      io.emit('newAttendance', attendance);
+      notifyNewAttendance(attendance);
       return res.status(201).json({ message: 'Tamu berhasil diabsenkan secara manual', attendance });
     }
 
@@ -205,7 +205,7 @@ export const forceCheckInParticipant = async (req: Request, res: Response) => {
     });
 
     // Broadcast
-    io.emit('newAttendance', attendance);
+    notifyNewAttendance(attendance);
 
     res.status(201).json({ message: 'Peserta berhasil diabsenkan secara manual', attendance });
   } catch (error: any) {

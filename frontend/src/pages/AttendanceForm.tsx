@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import apiClient from '../api/client';
-import { Users, User, ArrowLeft, ArrowRight, ShieldAlert, Check } from 'lucide-react';
+import { Users, User, ArrowRight, ShieldAlert, Check } from 'lucide-react';
 
 interface Event {
   id: string;

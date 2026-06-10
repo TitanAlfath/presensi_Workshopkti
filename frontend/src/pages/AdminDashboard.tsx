@@ -10,7 +10,6 @@ import {
   ArrowRight,
   TrendingUp,
   Sparkles,
-  Award,
   BellRing
 } from 'lucide-react';
 import {

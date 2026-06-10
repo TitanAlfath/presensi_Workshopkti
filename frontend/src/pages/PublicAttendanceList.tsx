@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { useSocket } from '../context/SocketContext';
 import apiClient from '../api/client';
-import { Search, Users, User, Clock, ArrowLeft, RefreshCw, ShieldAlert, Sparkles, CheckCircle2 } from 'lucide-react';
+import { Search, Users, Clock, ArrowLeft, RefreshCw, ShieldAlert, Sparkles } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
 interface Attendee {
@@ -42,7 +42,7 @@ const PublicAttendanceList: React.FC = () => {
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
   const [stats, setStats] = useState({ total: 0, mahasiswa: 0, tamu: 0 });
 
-  const fetchedInitial = useRef(false);
+
 
   // Debounce search input
   useEffect(() => {
@@ -82,18 +82,6 @@ const PublicAttendanceList: React.FC = () => {
     try {
       const res = await apiClient.get('/event/active');
       if (res.data) {
-        const statsRes = await apiClient.get(`/attendance/stats?eventId=${res.data.id}`, {
-          // Send a dummy Authorization or let the backend allow public stats?
-          // Oh, wait! The backend stats route is protected by authenticateJWT.
-          // Let's call a simplified statistic endpoint or calculate stats locally from our list,
-          // or let's look at backend/src/controllers/attendanceController.ts and see if getStats is protected.
-          // Yes, in routes: router.get('/stats', authenticateJWT, getStats);
-          // Wait, if stats requires JWT, can we get statistics by querying `/public-list` without page limit?
-          // Yes, we can compute stats by just getting the total from '/public-list' filters,
-          // but we can also fetch general stats, or make a public stats call if needed.
-          // Let's call '/attendance/public-list?limit=1' for PESERTA and TAMU to get totals.
-        });
-        
         // Let's do public queries to count:
         const totalRes = await apiClient.get('/attendance/public-list?limit=1');
         const mhsRes = await apiClient.get('/attendance/public-list?limit=1&type=PESERTA');

@@ -9,7 +9,6 @@ import Layout from './components/Layout';
 import AdminLayout from './components/AdminLayout';
 
 // Public Pages
-import LandingPage from './pages/LandingPage';
 import AttendanceForm from './pages/AttendanceForm';
 import SuccessPage from './pages/SuccessPage';
 import QRScannerPage from './pages/QRScannerPage';

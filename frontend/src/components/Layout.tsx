@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Sun, Moon, Calendar, MapPin } from 'lucide-react';
+import { Sun, Moon } from 'lucide-react';
 import logoDiesnat from '../assets/LOGO DIESNAT25.png';
 
 interface LayoutProps {

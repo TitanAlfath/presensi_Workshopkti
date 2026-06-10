@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 import apiClient from '../api/client';
 import { useAuth } from '../context/AuthContext';
-import { Settings, Plus, Download, Upload, AlertTriangle, CheckCircle, Info, Loader2, ShieldCheck, Eye, EyeOff } from 'lucide-react';
+import { Download, Upload, AlertTriangle, CheckCircle, Info, Loader2, ShieldCheck, Eye, EyeOff } from 'lucide-react';
 
 interface Event {
   id: string;

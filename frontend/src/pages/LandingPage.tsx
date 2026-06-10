@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import apiClient from '../api/client';
-import { Calendar, MapPin, ArrowRight, Clock, QrCode, Download, Award, BookOpen, CheckCircle, ShieldAlert, Users, User } from 'lucide-react';
+import { Calendar, MapPin, ArrowRight, Clock, QrCode, Download, Award, BookOpen, CheckCircle, Users, User } from 'lucide-react';
 import QRCode from 'qrcode';
 
 interface Event {

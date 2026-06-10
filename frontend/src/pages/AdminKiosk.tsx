@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import QRCode from 'qrcode';
 import apiClient from '../api/client';
 import { useSocket } from '../context/SocketContext';
-import { Users, QrCode, ArrowLeft, Download, Maximize, CheckCircle, Calendar } from 'lucide-react';
+import { Users, QrCode, ArrowLeft, Download, Maximize, CheckCircle } from 'lucide-react';
 import logoDiesnat from '../assets/LOGO DIESNAT25.png';
 
 interface Attendance {

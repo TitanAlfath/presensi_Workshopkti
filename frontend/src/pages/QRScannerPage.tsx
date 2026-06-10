@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Html5Qrcode } from 'html5-qrcode';
-import { Camera, ShieldAlert, ArrowLeft, RefreshCw } from 'lucide-react';
+import { Camera, ShieldAlert, ArrowLeft } from 'lucide-react';
 
 const QRScannerPage: React.FC = () => {
   const navigate = useNavigate();
@@ -75,7 +75,7 @@ const QRScannerPage: React.FC = () => {
           setScanning(false);
           processScannedData(decodedText);
         },
-        (errorMessage) => {
+        () => {
           // Verbose logs: ignore scan frame errors
         }
       );

@@ -6,7 +6,6 @@ import {
   LayoutDashboard,
   UserCheck,
   Users,
-  Award,
   BarChart3,
   Download,
   Settings,

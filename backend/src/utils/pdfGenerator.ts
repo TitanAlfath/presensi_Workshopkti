@@ -11,6 +11,7 @@ interface AttendanceRecord {
     prodi: string;
     fakultas: string;
     phone: string;
+    email?: string | null;
   } | null;
   guest?: {
     name: string;

@@ -1,20 +1,14 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState } from 'react';
 import apiClient from '../api/client';
 import { useSocket } from '../context/SocketContext';
 import {
   Search,
-  Filter,
-  Plus,
   Trash2,
-  FileSpreadsheet,
-  Upload,
   X,
   ChevronLeft,
   ChevronRight,
   UserPlus,
-  AlertCircle,
-  Download,
-  Info
+  AlertCircle
 } from 'lucide-react';
 
 interface AttendanceRecord {
@@ -27,6 +21,7 @@ interface AttendanceRecord {
     prodi: string;
     fakultas: string;
     phone: string;
+    email?: string | null;
   } | null;
   guest?: {
     name: string;
@@ -69,8 +64,6 @@ const AdminAttendance: React.FC = () => {
     position: ''
   });
   const [formError, setFormError] = useState<string | null>(null);
-
-  const fileInputRef = useRef<HTMLInputElement | null>(null);
 
   const fetchAttendance = async (page = 1) => {
     setLoading(true);
@@ -205,6 +198,7 @@ const AdminAttendance: React.FC = () => {
         type: 'PESERTA',
         name: '',
         phone: '',
+        email: '',
         nim: '',
         prodi: '',
         fakultas: 'FASTIKOM',

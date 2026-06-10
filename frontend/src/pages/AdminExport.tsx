@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import apiClient from '../api/client';
-import { Download, FileSpreadsheet, FileText, Info, Loader2 } from 'lucide-react';
+import { FileSpreadsheet, FileText, Info, Loader2 } from 'lucide-react';
 
 const AdminExport: React.FC = () => {
   const [activeEventName, setActiveEventName] = useState('Event Aktif');
