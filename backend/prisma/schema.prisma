@@ -1,0 +1,84 @@
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+enum Role {
+  ADMIN
+  SUPER_ADMIN
+}
+
+enum AttendanceType {
+  PESERTA
+  TAMU
+}
+
+model User {
+  id        String   @id @default(uuid())
+  email     String   @unique
+  password  String
+  name      String
+  role      Role     @default(ADMIN)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Event {
+  id          String       @id @default(uuid())
+  name        String
+  logo        String?      // File path/url
+  banner      String?      // File path/url
+  location    String
+  date        DateTime
+  description String
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+  attendances Attendance[]
+}
+
+model Participant {
+  id          String       @id @default(uuid())
+  name        String
+  nim         String       @unique
+  prodi       String
+  fakultas    String
+  phone       String
+  email       String?
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+  attendances Attendance[]
+}
+
+model Guest {
+  id          String       @id @default(uuid())
+  name        String
+  institution String
+  position    String
+  phone       String
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+  attendances Attendance[]
+}
+
+model Attendance {
+  id            String         @id @default(uuid())
+  eventId       String
+  event         Event          @relation(fields: [eventId], references: [id], onDelete: Cascade)
+  type          AttendanceType
+  participantId String?
+  participant   Participant?   @relation(fields: [participantId], references: [id], onDelete: Cascade)
+  guestId       String?
+  guest         Guest?         @relation(fields: [guestId], references: [id], onDelete: Cascade)
+  checkInTime   DateTime       @default(now())
+  createdAt     DateTime       @default(now())
+}
+
+model Settings {
+  id    String @id @default(uuid())
+  key   String @unique
+  value String
+}
